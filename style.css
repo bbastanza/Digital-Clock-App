@@ -1,0 +1,14 @@
+body {
+    background-color: black;
+    background: url("images/backgroud.jpg");
+}
+
+h1 {
+    color: aquamarine;
+    font-family: monospace;
+    text-align: center;
+    font-size: 30px;
+    border: 1px;
+    border-style: dotted;
+    border-color: darksalmon;
+}
