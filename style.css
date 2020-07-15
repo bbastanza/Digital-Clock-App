@@ -3,12 +3,15 @@ body {
     background: url("images/backgroud.jpg");
 }
 
-h1 {
+.head {
+    background-color: black;
     color: aquamarine;
     font-family: monospace;
+    margin: auto;
+    padding: 20px;
     text-align: center;
-    font-size: 30px;
-    border: 1px;
-    border-style: dotted;
-    border-color: darksalmon;
+    font-size: 40px;
+    border: 3px dashed darksalmon;
+    border-radius: 50px;
+    width: 400px;
 }
