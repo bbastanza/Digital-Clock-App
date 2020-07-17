@@ -3,14 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /// I MOVED THIS VARIABLE UP HERE BECAUSE THERE WAS A VALUE ERROR
-let twentyFour = true;
+let twentyFour = false;
 
-/// THIS IS THOUGHT WOULD CALL THE CLICK... THERE IS A NEW UNCAUGHT TYPE ERROR
-///>>>>>Uncaught TypeError: buttonPress is null<<<<<<< LINE 12
-let buttonPress = document.getElementById("switch")
+let buttonPress = document.getElementById("button")
 
-buttonPress.addEventListener("click", function () {
-    switchTwentyfour(twentyFour);
+twentyFour = buttonPress.addEventListener("click", function () {
+    switchTwentyfour();
 
 }
 )
@@ -42,27 +40,56 @@ function update() {
     }
 
 
-    /// HERE IS WHERE I CALLED THE FORMAT FUNCTION ///
+    /// calling the format time function
     formatTime(sec, min, hour);
 
 
     let date = mon + "|" + day + "|" + year;
     let datevar = document.getElementById("date");
     datevar.textContent = date;
-    // let timevar = document.getElementById("clock");
-    // timevar.textContent = time;
+
 }
 
-/// THIS IS THE NEW FORMATING FUNCTION. I THOUGHT IT WOULD BE BETTER TO 
-/// JUST INCLUDE THE TIME BECAUSE IT IS THE ONLY THING THAT HAS THE CHANGE
-function formatTime(sec, min, hour) {
+// function to switch from 24/12 hour time
+function switchTwentyfour() {
     if (twentyFour == false) {
-        if (hour.toString().length < 2) {
-            hour = "0" + hour;
+        twentyFour = true;
+    } else {
+        twentyFour = false;
+    }
+}
+// format time function
+function formatTime(sec, min, hour) {
+    // formating AM/PM
+    if (twentyFour == false) {
+        if (hour == 12) {
+            time = hour + ":" + min + ":" + sec + " PM";
+            let timevar = document.getElementById("clock");
+            timevar.textContent = time;
         }
-        time = (hour - 12) + ":" + min + ":" + sec;
-        let timevar = document.getElementById("clock");
-        timevar.textContent = time;
+        // this part is kinda funky.. subtracting 12 from noon and then adding it back.
+        // i think there's def a better way
+        if (hour == 24 || hour >= 12) {
+            hour = hour - 12
+            if (hour == 0) {
+                hour = hour + 12
+            }
+            if (hour.toString().length < 2) {
+                hour = "0" + hour;
+            }
+            time = hour + ":" + min + ":" + sec + " PM";
+            let timevar = document.getElementById("clock");
+            timevar.textContent = time;
+        } else {
+            if (hour.toString().length < 2) {
+                hour = "0" + hour;
+            }
+            time = hour + ":" + min + ":" + sec + " AM";
+            let timevar = document.getElementById("clock");
+            timevar.textContent = time;
+        }
+
+        // formatting for 24 hour
     } else {
         if (hour.toString().length < 2) {
             hour = "0" + hour;
@@ -73,22 +100,7 @@ function formatTime(sec, min, hour) {
     }
 }
 
-// *** I ADDED THE CONSOLE LOG TO SEE IF THE BUTTON WAS TRIGGARING THIS FUNCTION AT ALL... NO DICE ***
-// function to switch from 24/12 hour time
-function switchTwentyfour(twentyFour) {
-    console.log("HI")
-    if (twentyFour == false) {
-        twentyFour = true;
-    }
-    if (twentyFour == true) {
-        twentyFour = false;
-    }
-}
-// on button click this triggers the switchTwentyfour()^^^^
-//     let button = document.getElementById("switch");
-//     button.onclick = switchTwentyfour(twentyFour);
-//     twentyFour = switchTwentyfour(twentyFour);
-// }
+
 
 function digiClock() {
     setInterval(update, 1000);
