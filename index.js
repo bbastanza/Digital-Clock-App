@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     digiClock();
 });
 
-/// I MOVED THIS VARIABLE UP HERE BECAUSE THERE WAS A VALUE ERROR
 let twentyFour = false;
 
+// button presses
 let buttonPress = document.getElementById("button")
 
 twentyFour = buttonPress.addEventListener("click", function () {
@@ -13,6 +13,7 @@ twentyFour = buttonPress.addEventListener("click", function () {
 }
 )
 
+// main function
 function update() {
     let today = new Date();
     let sec = today.getSeconds();
@@ -38,7 +39,6 @@ function update() {
     if (hour == 0) {
         hour = 12;
     }
-
 
     /// calling the format time function
     formatTime(sec, min, hour);
