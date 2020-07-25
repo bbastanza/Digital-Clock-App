@@ -72,8 +72,9 @@ function formatTime(second, minute, hour, timeOfDay) {
             clock.textContent = time;
             return;
         }
+        // debugger;
         let tHour = hour > 12 ? hour - 12 : hour;
-        tHour = padWithZeros(thour);
+        tHour = padWithZeros(tHour);
         time = tHour + ":" + minute + ":" + second + " " + timeOfDay;
         clock.textContent = time;
     }
