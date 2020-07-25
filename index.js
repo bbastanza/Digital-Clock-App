@@ -1,3 +1,8 @@
+function digiClock() {
+    setInterval(update, 1000);
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     digiClock();
 });
@@ -5,107 +10,71 @@ document.addEventListener('DOMContentLoaded', function () {
 let twentyFour = false;
 
 // button presses
-let buttonPress = document.getElementById("button")
-
-twentyFour = buttonPress.addEventListener("click", function () {
+document.getElementById("button").addEventListener("click", function () {
     switchTwentyfour();
+})
 
-}
-)
+let clock = document.getElementById("clock");
+let datevar = document.getElementById("date");
 
 // main function
 function update() {
-    let today = new Date();
-    let sec = today.getSeconds();
-    let min = today.getMinutes();
+    const today = new Date();
+    let second = today.getSeconds();
+    let minute = today.getMinutes();
     let hour = today.getHours();
-    let mon = (today.getMonth() + 1);
+    let month = (today.getMonth() + 1);
     let day = today.getDate();
     let year = (today.getFullYear() - 2000);
-    if (sec.toString().length < 2) {
-        sec = "0" + sec;
-    }
-    if (min.toString().length < 2) {
-        min = "0" + min;
-    }
-    if (day.toString().length < 2) {
-        day = "0" + day;
-    }
-    if (mon.toString().length < 2) {
-        mon = "0" + mon;
-    }
+    const timeOfDay = hour >= 12 ? "PM" : "AM";
 
-    // sets midnight to 12
-    if (hour == 0) {
-        hour = 12;
-    }
+    second = padWithZeros(second)
+    minute = padWithZeros(minute)
+    month = padWithZeros(month)
+    day = padWithZeros(day)
+
 
     /// calling the format time function
-    formatTime(sec, min, hour);
+    formatTime(second, minute, hour, timeOfDay);
+    formatDate(month, day, year)
 
-
-    let date = mon + "|" + day + "|" + year;
-    let datevar = document.getElementById("date");
-    datevar.textContent = date;
 
 }
+
+function padWithZeros(num) {
+    return num.toString().length < 2 ? "0" + num : num;
+}
+
+function formatDate(month, day, year) {
+    let date = month + "|" + day + "|" + year;
+    datevar.textContent = date;
+}
+
+
 
 // function to switch from 24/12 hour time
 function switchTwentyfour() {
-    if (twentyFour == false) {
-        twentyFour = true;
-    } else {
-        twentyFour = false;
-    }
+    twentyFour = !twentyFour;
 }
+
+
+
 // format time function
-function formatTime(sec, min, hour) {
-    // formating AM/PM
-    if (twentyFour == false) {
-        if (hour == 12) {
-            time = hour + ":" + min + ":" + sec + " PM";
-            let timevar = document.getElementById("clock");
-            timevar.textContent = time;
-        }
-        // this part is kinda funky.. subtracting 12 from noon and then adding it back.
-        // i think there's def a better way
-        if (hour == 24 || hour >= 12) {
-            hour = hour - 12
-            if (hour == 0) {
-                hour = hour + 12
-            }
-            if (hour.toString().length < 2) {
-                hour = "0" + hour;
-            }
-            time = hour + ":" + min + ":" + sec + " PM";
-            let timevar = document.getElementById("clock");
-            timevar.textContent = time;
-        } else {
-            if (hour.toString().length < 2) {
-                hour = "0" + hour;
-            }
-            time = hour + ":" + min + ":" + sec + " AM";
-            let timevar = document.getElementById("clock");
-            timevar.textContent = time;
-        }
-
-        // formatting for 24 hour
+function formatTime(second, minute, hour, timeOfDay) {
+    // formating AM/PM\
+    let time;
+    if (twentyFour) {
+        time = hour + ":" + minute + ":" + second;
+        clock.textContent = time
     } else {
-        if (hour.toString().length < 2) {
-            hour = "0" + hour;
+        if (hour === "00") {
+            time = "12" + ":" + minute + ":" + second + " " + timeOfDay;
+            clock.textContent = time;
+            return;
         }
-        time = hour + ":" + min + ":" + sec;
-        let timevar = document.getElementById("clock");
-        timevar.textContent = time;
+        let tHour = hour > 12 ? hour - 12 : hour;
+        tHour = padWithZeros(thour);
+        time = tHour + ":" + minute + ":" + second + " " + timeOfDay;
+        clock.textContent = time;
     }
 }
-
-
-
-function digiClock() {
-    setInterval(update, 1000);
-}
-
-
-
-
