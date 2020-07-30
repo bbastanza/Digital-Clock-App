@@ -5,7 +5,7 @@
 
 ![js](MDimages/javascript.png) ![html](MDimages/html.png) ![css](MDimages/css.png)
 
----
+Check it out [here](https://bbastanza.github.io/digitalclock/)
 
  ![Screenshot](MDimages/screenshot.png)
 
