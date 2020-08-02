@@ -1,6 +1,8 @@
 body {
     background-color: black;
     background: url("images/backgroud.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     font-size: 60px
 }
 
