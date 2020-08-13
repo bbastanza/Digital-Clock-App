@@ -1,7 +1,6 @@
 //
 //**************  Project 1 Digital Clock App **************//
 
-// listens to dom content loaded to start app
 document.addEventListener("DOMContentLoaded", function () {
     setInterval(update, 1000);
 });
@@ -9,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let twentyFour = false;
 
 document.getElementById("button").addEventListener("click", function () {
-    switchTwentyfour();
+    twentyFour = !twentyFour;
 });
 
 const clock = document.getElementById("clock");
@@ -19,10 +18,10 @@ function update() {
     const today = new Date();
     let second = today.getSeconds();
     let minute = today.getMinutes();
-    let hour = today.getHours();
+    const hour = today.getHours();
     let month = today.getMonth() + 1;
     let day = today.getDate();
-    let year = today.getFullYear() - 2000;
+    const year = today.getFullYear() - 2000;
     const timeOfDay = hour >= 12 ? "PM" : "AM";
 
     second = padWithZeros(second);
@@ -41,10 +40,6 @@ function padWithZeros(num) {
 function formatDate(month, day, year) {
     let date = month + "|" + day + "|" + year;
     datevar.textContent = date;
-}
-
-function switchTwentyfour() {
-    twentyFour = !twentyFour;
 }
 
 function formatTime(second, minute, hour, timeOfDay) {
