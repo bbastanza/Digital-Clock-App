@@ -46,6 +46,7 @@ function formatTime(second, minute, hour, timeOfDay) {
     let time;
     // Military Time Format
     if (twentyFour) {
+        hour = padWithZeros(hour);
         time = hour + ":" + minute + ":" + second;
         clock.textContent = time;
         // Standard Time Format
