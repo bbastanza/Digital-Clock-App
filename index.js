@@ -1,6 +1,3 @@
-//
-//**************  Project 1 Digital Clock App **************//
-
 document.addEventListener("DOMContentLoaded", function () {
     setInterval(update, 1000);
 });
@@ -51,7 +48,7 @@ function formatTime(second, minute, hour, timeOfDay) {
         clock.textContent = time;
         // Standard Time Format
     } else {
-        if (hour === "00") {
+        if (hour === 0) {
             time = "12" + ":" + minute + ":" + second + " " + timeOfDay;
             clock.textContent = time;
             return;
