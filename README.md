@@ -4,7 +4,7 @@
 
 ![js](MDimages/javascript.png) ![html](MDimages/html.png) ![css](MDimages/css.png)
 
-Check it out [here](https://bbastanza.github.io/digitalclock/)
+Check it out [here](https://bbastanza.github.io/Digital-Clock-App/)
 
 ![Screenshot](MDimages/screenshot.png)
 
