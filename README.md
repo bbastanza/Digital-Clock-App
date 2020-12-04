@@ -25,4 +25,4 @@ It was challenging at the time, but I learned a ton in the process.
 
 <a href="https://www.brianbastanza.me/" target="_blank" rel="noopener">Personal Website</a>
 
-[LinkedIn](www.linkedin.com/in/bbastanza)
+[LinkedIn](https://www.linkedin.com/in/bbastanza)
