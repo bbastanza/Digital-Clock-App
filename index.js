@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    setInterval(update, 1000);
+    setInterval(update, 100);
 });
 
 let twentyFour = false;
@@ -46,7 +46,7 @@ function formatTime(second, minute, hour, timeOfDay) {
         hour = padWithZeros(hour);
         time = hour + ":" + minute + ":" + second;
         clock.textContent = time;
-        // Standard Time Format
+    // Standard Time Format
     } else {
         if (hour === 0) {
             time = "12" + ":" + minute + ":" + second + " " + timeOfDay;
